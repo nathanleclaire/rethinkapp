@@ -1,0 +1,12 @@
+db:
+  image: dockerfile/rethinkdb
+  volumes:
+    - "/data/rethinkdb_data"
+  ports:
+    - "8080:8080"
+web:
+  build: .
+  links:
+    - db:db
+  ports:
+    - "5000:5000"
